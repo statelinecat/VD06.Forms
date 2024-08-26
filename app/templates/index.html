@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анкета пользователя</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div class="container my-5">
+        <h2 class="mb-4">Анкета пользователя</h2>
+        <form method="POST">
+            <div class="form-group">
+                <label for="name">Имя:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="city">Город:</label>
+                <input type="text" class="form-control" id="city" name="city" required>
+            </div>
+            <div class="form-group">
+                <label for="hobby">Хобби:</label>
+                <input type="text" class="form-control" id="hobby" name="hobby" required>
+            </div>
+            <div class="form-group">
+                <label for="age">Возраст:</label>
+                <input type="number" class="form-control" id="age" name="age" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Отправить</button>
+        </form>
+
+        {% if name and city and hobby and age %}
+        <div class="mt-5">
+            <h4>Введенные данные:</h4>
+            <p><strong>Имя:</strong> {{ name }}</p>
+            <p><strong>Город:</strong> {{ city }}</p>
+            <p><strong>Хобби:</strong> {{ hobby }}</p>
+            <p><strong>Возраст:</strong> {{ age }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
