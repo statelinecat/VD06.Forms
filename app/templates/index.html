@@ -6,6 +6,15 @@
     <title>Анкета пользователя</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('../static/image/dose3.jpg');
+            background-size: cover; /* Масштабирует изображение, чтобы оно покрывало весь экран */
+            background-repeat: no-repeat; /* Изображение не будет повторяться */
+            background-attachment: fixed; /* Фон остается неподвижным при прокрутке */
+            background-position: center; /* Центрирует изображение */
+        }
+    </style>
 </head>
 <body>
     <div class="container my-5">
@@ -28,17 +37,23 @@
                 <input type="number" class="form-control" id="age" name="age" required>
             </div>
             <button type="submit" class="btn btn-primary">Отправить</button>
+            <br>
+            <br>
         </form>
 
-        {% if name and city and hobby and age %}
-        <div class="mt-5">
-            <h4>Введенные данные:</h4>
-            <p><strong>Имя:</strong> {{ name }}</p>
-            <p><strong>Город:</strong> {{ city }}</p>
-            <p><strong>Хобби:</strong> {{ hobby }}</p>
-            <p><strong>Возраст:</strong> {{ age }}</p>
-        </div>
-        {% endif %}
+        <h2>Профили пользователей</h2>
+        <br>
+        {% for profile in profiles %}
+           <div class="row">
+              <div class="col-sm-12 mb-3 mb-sm-0">
+                <div class="card">
+                  <div class="card-body">
+                    <p><b>Имя:</b> {{ profile.name }}  <b>Возраст:</b> {{ profile.age }}  <b>Город:</b> {{ profile.city }}  <b>Хобби:</b> {{ profile.hobby }}</p>
+                  </div>
+                </div>
+              </div>
+           </div>
+        {% endfor %}
     </div>
 </body>
 </html>
